@@ -67,11 +67,14 @@ let rec product xs =
 *)
 
 (* Let's write the common parts just once: *)
-let rec every answer combine xs = failwith "For you to implement"
+let rec every answer combine xs = 
+  match xs with
+  | [] -> answer
+  | x :: xs -> combine x (every answer combine xs)
 
 (* Now let's rewrite sum and product in just one line each using [every] *)
-let simpler_sum xs = failwith "For you to implement"
-let simpler_product xs = failwith "For you to implement"
+let simpler_sum xs = every 0 ( + ) xs
+let simpler_product xs = every 1 ( * ) xs 
 
 let%test "Testing simpler_product..." = Int.( = ) 1 (simpler_product [])
 let%test "Testing simpler_product..." = Int.( = ) 55 (simpler_product [ 55 ])
