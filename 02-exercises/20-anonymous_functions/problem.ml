@@ -67,7 +67,7 @@ let () =
    is not zero, and otherwise just returns 0.
 *)
 let apply_if_nonzero f i =
-  failwith "For you to implement"
+  if i = 0 then i else f i
 
 let%test "Testing apply_if_nonzero..." =
   Int.(=) 0 (apply_if_nonzero (fun x -> 10 / x) 0)
